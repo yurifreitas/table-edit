@@ -19,7 +19,6 @@ import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
-import axios from 'axios'
 import Alert from '@material-ui/lab/Alert';
 import {database} from "../firebase";
 import {Link} from "react-router-dom";
@@ -44,15 +43,6 @@ const tableIcons = {
     ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref}/>)
 };
 
-const api = axios.create({
-    baseURL: `https://reqres.in/api`
-})
-
-
-function validateEmail(email) {
-    const re = /^((?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\]))$/;
-    return re.test(String(email).toLowerCase());
-}
 
 function Tables() {
 
@@ -85,7 +75,7 @@ function Tables() {
                 console.log(users_list)
                 var index = 0
                 Object.entries(users_list).forEach(([key, value]) => {
-                    console.log(key + ' ' + value);
+
                     users_list[key]["id"] = index;
                     users_list[key]["avatar"] = "https://reqres.in/img/faces/6-image.jpg";
                     list[index] = users_list[key]
