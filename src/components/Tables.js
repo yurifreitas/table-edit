@@ -108,17 +108,30 @@ function Tables() {
         }
         if (newData.idade === "") {
             errorList.push("Digite a idade")
+        } else {
+            if (isNaN(newData.idade)) {
+                errorList.push("Idade deve conter apenas numeros")
+            } else if (newData.idade.length > 2) {
+                errorList.push("Idade invalida")
+            }
+
         }
-        if (newData.estado_civil === "" ) {
+        if (newData.estado_civil === "") {
             errorList.push("Digite o estado civil")
         }
-        if (newData.cpf === "" ) {
+        if (newData.cpf === "") {
             errorList.push("Digite o cpf")
+        } else {
+            if (isNaN(newData.cpf)) {
+                errorList.push("cpf deve conter apenas numeros")
+            } else if (newData.cpf.lengthn != 11) {
+                errorList.push("cpf invalido")
+            }
         }
-        if (newData.estado === "" ) {
+        if (newData.estado === "") {
             errorList.push("Digite o estado")
         }
-        if (newData. cidade === "" ) {
+        if (newData.cidade === "") {
             errorList.push("Digite a cidade")
         }
 
@@ -148,19 +161,33 @@ function Tables() {
         }
         if (newData.idade === "") {
             errorList.push("Digite a idade")
+        } else {
+            if (isNaN(newData.idade)) {
+                errorList.push("Idade deve conter apenas numeros")
+            } else if (newData.idade.length > 2) {
+                errorList.push("Idade invalida")
+            }
+
         }
-        if (newData.estado_civil === "" ) {
+        if (newData.estado_civil === "") {
             errorList.push("Digite o estado civil")
         }
-        if (newData.cpf === "" ) {
+        if (newData.cpf === "") {
             errorList.push("Digite o cpf")
+        } else {
+            if (isNaN(newData.cpf)) {
+                errorList.push("cpf deve conter apenas numeros")
+            } else if (newData.cpf.length != 11) {
+                errorList.push("cpf invalido")
+            }
         }
-        if (newData.estado === "" ) {
+        if (newData.estado === "") {
             errorList.push("Digite o estado")
         }
-        if (newData. cidade === "" ) {
+        if (newData.cidade === "") {
             errorList.push("Digite a cidade")
         }
+
 
         if (errorList.length < 1) { //no error
             var length_user = data.length
