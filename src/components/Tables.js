@@ -22,6 +22,7 @@ import ViewColumn from '@material-ui/icons/ViewColumn';
 import axios from 'axios'
 import Alert from '@material-ui/lab/Alert';
 import {database} from "../firebase";
+import {Link} from "react-router-dom";
 
 const tableIcons = {
     Add: forwardRef((props, ref) => <AddBox {...props} ref={ref}/>),
@@ -82,13 +83,14 @@ function Tables() {
 
             if (users_list !== null) {
                 console.log(users_list)
-
-                users_list.map((user, index) => {
-
-                    user["id"] = index;
-                    user["avatar"] = "https://reqres.in/img/faces/6-image.jpg";
-                    list[index] = user
-                })
+                var index = 0
+                Object.entries(users_list).forEach(([key, value]) => {
+                    console.log(key + ' ' + value);
+                    users_list[key]["id"] = index;
+                    users_list[key]["avatar"] = "https://reqres.in/img/faces/6-image.jpg";
+                    list[index] = users_list[key]
+                    index++
+                });
                 setData(list)
             }
         });
@@ -121,7 +123,7 @@ function Tables() {
         }
 
         if (errorList.length < 1) {
-            database.ref('users/' + newData.id).set(newData).then(() => {
+            database.ref('users/item' + newData.id).set(newData).then(() => {
                 getUsers()
                 resolve()
                 setErrorMessages([])
@@ -163,7 +165,7 @@ function Tables() {
         if (errorList.length < 1) { //no error
             var length_user = data.length
 
-            database.ref('users/' + length_user).set(newData).then(() => {
+            database.ref('users/item' + length_user).set(newData).then(() => {
                 getUsers()
                 resolve()
                 setErrorMessages([])
@@ -182,7 +184,7 @@ function Tables() {
     }
 
     const handleRowDelete = (oldData, resolve) => {
-        database.ref('users/' + oldData.id).remove().then(() => {
+        database.ref('users/item' + oldData.id).remove().then(() => {
             getUsers()
             resolve()
         })
@@ -196,7 +198,7 @@ function Tables() {
 
     return (
         <div className="App">
-
+            <Link to="/profile" className="btn btn-primary w-100 mb-3">Perfil</Link>
             <Grid container spacing={1}>
                 <Grid item>
                     <div>
