@@ -15,6 +15,9 @@ export default function Signup() {
         if(passwordRef.current.value !== passwordConfirmRef.current.value){
             return setError("Senhas são diferentes")
         }
+        if(passwordRef.current.value.length < 6) {
+            return setError("Senhas deve conter no minimo 6 caracteres")
+        }
         try{
             setError("")
             setLoading(true)

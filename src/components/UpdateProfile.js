@@ -17,13 +17,19 @@ export default function UpdateProfile() {
         if(passwordRef.current.value !== passwordConfirmRef.current.value){
             return setError("Senhas são diferentes")
         }
+        if(passwordRef.current.value) {
+            if(passwordRef.current.value.length < 6) {
+                return setError("Senhas deve conter no minimo 6 caracteres")
+            }
+        }
+
         const promises = []
         if(emailRef.current.value !== currentUser.email){
             promises.push(updateEmail(emailRef.current.value))
 
         }
         if(passwordRef.current.value){
-            promises.push(updateEmail(passwordRef.current.value))
+            promises.push(updatePassword(passwordRef.current.value))
 
         }
         Promise.all(promises).then(()=>{
