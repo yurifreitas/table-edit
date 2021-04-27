@@ -114,7 +114,7 @@ function Tables() {
         } else {
             if (isNaN(newData.cpf)) {
                 errorList.push("cpf deve conter apenas numeros")
-            } else if (newData.cpf.lengthn != 11) {
+            } else if (newData.cpf.lengthn !== 11) {
                 errorList.push("cpf invalido")
             }
         }
@@ -167,7 +167,7 @@ function Tables() {
         } else {
             if (isNaN(newData.cpf)) {
                 errorList.push("cpf deve conter apenas numeros")
-            } else if (newData.cpf.length != 11) {
+            } else if (newData.cpf.length !== 11) {
                 errorList.push("cpf invalido")
             }
         }
